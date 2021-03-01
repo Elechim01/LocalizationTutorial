@@ -9,13 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
+        Text("welcomeTitle")
             .padding()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ForEach(["en","ja","pt","it"],id:\.self){ localeIdentifier in
+            ContentView()
+                .environment(\.locale,.init(identifier : localeIdentifier))
+                .previewDisplayName(localeIdentifier)
+        }
+        
     }
 }
